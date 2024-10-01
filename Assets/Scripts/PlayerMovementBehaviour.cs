@@ -8,33 +8,24 @@ public class PlayerMovementBehaviour : MonoBehaviour
 
     void Start()
     {
-        
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
-        Vector3 movementDirection = new Vector3(0,0,0);
-        if (Input.GetKey(KeyCode.W))
-            movementDirection += new Vector3(0, 0, 1);
-        if (Input.GetKey(KeyCode.A))
-            movementDirection += new Vector3(-1, 0, 0);
-        if (Input.GetKey(KeyCode.S))
-            movementDirection += new Vector3(0, 0, -1);
-        if (Input.GetKey(KeyCode.D))
-            movementDirection += Vector3.right;
-
-        Debug.Log(transform.forward);
-        transform.position +=
-            (movementDirection.z * transform.forward +
-            movementDirection.x * transform.right) *
-            _movementSpeed * Time.deltaTime;
-        //transform.position += movementDirection * _movementSpeed * Time.deltaTime;
+        Vector3 input = Vector3.zero;
+        if (Input.GetKey(KeyCode.A)) input += Vector3.left;
+        if (Input.GetKey(KeyCode.D)) input += Vector3.right;
+        if (Input.GetKey(KeyCode.W)) input += Vector3.forward;
+        if (Input.GetKey(KeyCode.S)) input += Vector3.back;
+        Vector3 velocity =
+            (transform.forward * input.z +
+            transform.right * input.x) * _movementSpeed;
+        transform.position += velocity * Time.deltaTime;
     }
     private void Update()
     {
-        Vector3 rotation = Vector3.zero;
-        rotation.y = Input.GetAxis("Mouse X");
-        transform.Rotate(rotation * Time.deltaTime * _rotationSpeed);
+        Vector3 rotation = new Vector3(0, Input.GetAxis("Mouse X"), 0);
+        transform.Rotate(rotation * _rotationSpeed);
     }
 }
