@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterBehavior : MonoBehaviour
+public class CharacterBehaviour : MonoBehaviour
 {
     [SerializeField, Range(0, 10)] protected int _maxHealth;
 

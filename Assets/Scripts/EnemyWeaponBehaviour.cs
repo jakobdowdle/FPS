@@ -19,10 +19,10 @@ public class EnemyWeaponBehaviour : WeaponBehaviour
         {
             _timer -= _cooldownTimer;
             RaycastHit hit;
-            Physics.Raycast(transform.position, PlayerController.Instance.transform.position - transform.forward, out hit);
+            Physics.Raycast(transform.position, PlayerController.Instance.transform.position - transform.position, out hit);
             if (hit.transform.tag != "Player") return;
+            Physics.Raycast(transform.position, transform.forward, out hit);
             FireWeapon(hit);
-            
         }
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class PlayerController : CharacterBehavior
+public class PlayerController : CharacterBehaviour
 {
     [SerializeField] private GameObject _failureWindow;
     [SerializeField] private TextMeshProUGUI _healthUIText;

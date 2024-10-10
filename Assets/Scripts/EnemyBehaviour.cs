@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyBehaviour : CharacterBehavior
+public class EnemyBehaviour : CharacterBehaviour
 {
     public override void Die()
     {
@@ -12,6 +12,6 @@ public class EnemyBehaviour : CharacterBehavior
     // Update is called once per frame
     void Update()
     {
-        transform.LookAt(PlayerController.Instance.transform.position);
+        transform.LookAt(PlayerController.Instance.transform);
     }
 }

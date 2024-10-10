@@ -14,8 +14,7 @@ public class WeaponBehaviour : MonoBehaviour
         projectile.transform.parent = hit.transform;
         if (hit.transform.tag == "Enemy" || hit.transform.tag == "Player")
         {
-            CharacterBehavior character = hit.transform.GetComponent<CharacterBehavior>();
-            Debug.Log("omar");
+            CharacterBehaviour character = hit.transform.GetComponent<CharacterBehaviour>();
             character.Hit();
         }
     }
