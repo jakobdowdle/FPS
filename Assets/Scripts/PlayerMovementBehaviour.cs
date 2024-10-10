@@ -5,10 +5,11 @@ using UnityEngine;
 public class PlayerMovementBehaviour : MonoBehaviour
 {
     [SerializeField] private float _movementSpeed;
+    private Rigidbody _rigidbody;
 
     void Start()
     {
-        
+        _rigidbody = GetComponent<Rigidbody>();
     }
 
     void FixedUpdate()
@@ -18,10 +19,13 @@ public class PlayerMovementBehaviour : MonoBehaviour
         if (Input.GetKey(KeyCode.D)) input += Vector3.right;
         if (Input.GetKey(KeyCode.W)) input += Vector3.forward;
         if (Input.GetKey(KeyCode.S)) input += Vector3.back;
+        input = input.normalized;
         Vector3 velocity =
             (transform.forward * input.z +
             transform.right * input.x) * _movementSpeed;
-        transform.position += velocity * Time.deltaTime;
+        //transform.position += velocity * Time.deltaTime;
+
+        _rigidbody.velocity = velocity;
     }
 
     private void OnCollisionEnter(Collision collision)
