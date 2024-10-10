@@ -15,12 +15,15 @@ public class EnemyWeaponBehaviour : WeaponBehaviour
     void Update()
     {
         _timer += Time.deltaTime;
-        if(_timer >= _cooldownTimer)
+        RaycastHit hit;
+        Vector3 toPlayer = PlayerController.Instance.transform.position - transform.position;
+        Physics.Raycast(transform.position, toPlayer, out hit);
+        if (hit.transform.tag != "Player") return;
+
+        if (_timer >= _cooldownTimer)
         {
             _timer -= _cooldownTimer;
-            RaycastHit hit;
-            Physics.Raycast(transform.position, PlayerController.Instance.transform.position - transform.position, out hit);
-            if (hit.transform.tag != "Player") return;
+
             Physics.Raycast(transform.position, transform.forward, out hit);
             FireWeapon(hit);
         }
