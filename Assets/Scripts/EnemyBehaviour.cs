@@ -10,7 +10,6 @@ public class EnemyBehaviour : CharacterBehaviour
     {
         transform.Rotate(-75f, 0, 0);
         _isDead = true;
-        Debug.Log("Dead");
     }
 
     // Update is called once per frame
@@ -27,7 +26,6 @@ public class EnemyBehaviour : CharacterBehaviour
 
     public bool IsDead()
     {
-        Debug.Log(_isDead);
         return _isDead;
     }
 }

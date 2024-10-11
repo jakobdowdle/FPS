@@ -124,3 +124,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e046a5fb3a6d8804583c3002b0d451ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DoorColor: {r: 0, g: 0, b: 0, a: 0}
+  _playerInRange: 0
+  _keyForDoor: {fileID: 0}
