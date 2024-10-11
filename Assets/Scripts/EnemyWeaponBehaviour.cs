@@ -6,15 +6,20 @@ public class EnemyWeaponBehaviour : WeaponBehaviour
 {
     [SerializeField] private float _cooldownTimer;
     private float _timer;
+
+    private EnemyBehaviour _enemyBehaviour;
+
     void Start()
     {
-
+        _enemyBehaviour = GetComponent<EnemyBehaviour>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        _timer += Time.deltaTime;
+
+        if (_enemyBehaviour != null && _enemyBehaviour.IsDead()) return;
+            _timer += Time.deltaTime;
         RaycastHit hit;
         Vector3 toPlayer = PlayerController.Instance.transform.position - transform.position;
         Physics.Raycast(transform.position, toPlayer, out hit);

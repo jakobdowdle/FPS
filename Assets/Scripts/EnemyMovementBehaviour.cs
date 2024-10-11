@@ -8,14 +8,21 @@ public class EnemyMovementBehaviour : MonoBehaviour
     [SerializeField] private GameObject _enemyCapsule;
     private Rigidbody _rigidbody;
 
+    private EnemyBehaviour _enemyBehaviour;
+
     // Start is called before the first frame update
     void Start()
     {
         _rigidbody = GetComponent<Rigidbody>();
+        _enemyBehaviour = GetComponent<EnemyBehaviour>();
     }
 
     void FixedUpdate() {
 
+        if (_enemyBehaviour != null && _enemyBehaviour.IsDead()) {
+            _rigidbody.velocity = Vector3.zero;
+            return;
+        }
 
         _rigidbody.velocity = transform.forward * _movementSpeed;
     }
