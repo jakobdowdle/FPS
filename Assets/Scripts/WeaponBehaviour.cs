@@ -10,7 +10,6 @@ public class WeaponBehaviour : MonoBehaviour
     {
         GameObject projectile = Instantiate(_projectilePrefab);
         GetComponent<AudioSource>().Play();
-        Debug.Log("Fighting");
         projectile.transform.position = hit.point;
         projectile.transform.parent = hit.transform;
         if (hit.transform.tag == "Enemy" || hit.transform.tag == "Player")
